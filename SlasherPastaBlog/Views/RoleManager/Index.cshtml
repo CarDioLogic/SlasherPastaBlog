@@ -17,6 +17,7 @@
         <tr class ="customLink">
             <th >Id</th>
             <th>Role</th>
+            <th></th>
         </tr>
     </thead>
     <tbody class="bi">
@@ -25,6 +26,18 @@
             <tr>
                 <td>@role.Id</td>
                 <td>@role.Name</td>
+                @if (role.Name != "RatingE" && role.Name != "RatingT" && role.Name != "RatingM" && role.Name != "Admin" && role.Name != "Member")
+                {
+                    <td>
+                        <form asp-action="Delete" asp-controller="RoleManager" method="post">
+                            <input type="hidden" name="id" value="@role.Id" />
+                            <input type="submit" value="Delete" class="customSpookyBtn" />
+                        </form>
+                    </td>
+                } else
+                {
+                    <td></td>
+                }
             </tr>
         }
     </tbody>

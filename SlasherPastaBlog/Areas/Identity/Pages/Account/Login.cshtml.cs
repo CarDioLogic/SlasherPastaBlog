@@ -113,23 +113,36 @@ namespace SlasherPastaBlog.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+
                 // Check if the input is an email or username
-                var userName = Input.UsernameOrEmail;
+                var loginIdentifier = Input.UsernameOrEmail;
                 ApplicationUser user = null;
+
                 if (Input.UsernameOrEmail.Contains("@"))
                 {
                     user = await _userManager.FindByEmailAsync(Input.UsernameOrEmail);
-                    if (user != null)
-                    {
-                        userName = user.UserName;
-                    }
+
+                } else if (!Input.UsernameOrEmail.Contains("@"))
+                {
+                    var normalizedUserName = _userManager.NormalizeName(loginIdentifier);
+                    user = await _userManager.FindByNameAsync(normalizedUserName);
+                }
+
+                if (user != null && await _userManager.IsInRoleAsync(user, "Banned"))
+                {
+                    await _signInManager.SignOutAsync();
+
+                    TempData["BannedMessage"] = "You have been banned from the site.";
+
+                    return RedirectToAction("Index", "Home");
                 }
 
 
 
-                    // This doesn't count login failures towards account lockout
-                    // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                    var result = await _signInManager.PasswordSignInAsync(userName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                var result = await _signInManager.PasswordSignInAsync(loginIdentifier, Input.Password, Input.RememberMe, lockoutOnFailure: false);
 
                 if (result.Succeeded)
                 {

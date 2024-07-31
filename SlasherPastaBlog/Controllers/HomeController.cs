@@ -17,7 +17,7 @@ namespace SlasherPastaBlog.Controllers
         {
             return View();
         }
-        public IActionResult Privacy()
+        public IActionResult AppDetails()
         {
             return View();
         }

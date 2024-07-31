@@ -8,5 +8,10 @@ namespace SlasherPastaBlog.Models
 
         // Relationship
         public ICollection<Artigos> Artigos { get; set; } = default!;
+
+        internal bool IsInRole(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -109,5 +109,7 @@ namespace SlasherPastaBlog.Controllers
         {
             return new List<string>(await _userManager.GetRolesAsync(user));
         }
+
+
     }
 }

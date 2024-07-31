@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SlasherPastaBlog.Models.Artigos>
+﻿@using System.Globalization;
+@model IEnumerable<SlasherPastaBlog.Models.Artigos>
 
 @{
     ViewData["Title"] = "Index";
@@ -47,7 +48,7 @@
                 <input type="hidden" name="month" value="@month" />
                 <input type="text" class="form-control customTextInput" placeholder="Search articles" name="searchString" value="@ViewData["CurrentFilter"]" />
                 <div class="input-group-append">
-                    <input type="submit" class="customInputBtn" value="Procurar artigos" />
+                    <input type="submit" class="customInputBtn" value="Search" />
                 </div>
             </div>
 
@@ -63,7 +64,7 @@
                            
                             <p class="card-text">Restriction: @item.Role</p>
                             <p class="card-text">Author: @item.ApplicationUser.UserName</p>
-                            <p class="card-text text-muted">Published: @item.DataPublicacao.ToString("MMMM dd, yyyy")</p>
+                            <p class="card-text text-muted">Published: @item.DataPublicacao.ToString("MMMM dd, yyyy", new CultureInfo("en-US"))</p>
 
 
                             <div class="mb-auto">

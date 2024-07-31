@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace SlasherPastaBlog.Controllers
                 artigos = artigos.Where(a => a.Role == "RatingT" || a.Role == "RatingE")
                     .Include(a => a.ApplicationUser); ;
             }
-            else if (User.IsInRole("RatingE"))
+            else if (User.IsInRole("RatingE") || !User.Identity.IsAuthenticated)
             {
                 // See only E rated articles
                 artigos = artigos.Where(a => a.Role == "RatingE")
@@ -56,7 +57,7 @@ namespace SlasherPastaBlog.Controllers
                 artigos = artigos.Where(s => s.DataPublicacao.Year == year.Value);
                 if (!String.IsNullOrEmpty(month))
                 {
-                    var monthNumber = DateTime.ParseExact(month, "MMMM", null).Month;
+                    var monthNumber = DateTime.ParseExact(month, "MMMM", new CultureInfo("en-US")).Month;
                     artigos = artigos.Where(s => s.DataPublicacao.Month == monthNumber)
                         .Include(a => a.ApplicationUser); ;
                 }
@@ -93,9 +94,9 @@ namespace SlasherPastaBlog.Controllers
             foreach (var year in yearList)
             {
                 var monthsInYear = allArticles.Where(a => a.DataPublicacao.Year == year)
-                                              .Select(a => a.DataPublicacao.ToString("MMMM"))
+                                              .Select(a => a.DataPublicacao.ToString("MMMM", new CultureInfo("en-US")))
                                               .Distinct()
-                                              .OrderByDescending(m => DateTime.ParseExact(m, "MMMM", null).Month)
+                                              .OrderByDescending(m => DateTime.ParseExact(m, "MMMM", new CultureInfo("en-US")).Month)
                                               .ToList();
                 monthList[year] = monthsInYear;
             }

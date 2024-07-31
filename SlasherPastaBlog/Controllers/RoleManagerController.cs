@@ -28,5 +28,41 @@ namespace SlasherPastaBlog.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            
+            if(role.Name == "RatingE" || role.Name == "RatingT" || role.Name == "RatingM" || role.Name == "Admin")
+            {
+                throw new Exception("Can't delete this type of role!");
+            } else
+            {
+                if (role != null)
+                {
+                    var result = await _roleManager.DeleteAsync(role);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Failed to delete the role.");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Role not found.");
+                }
+            }
+         
+            return View(); 
+        }
     }
 }
