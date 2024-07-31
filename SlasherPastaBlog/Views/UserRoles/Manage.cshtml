@@ -1,0 +1,42 @@
+﻿@model List<ManageUserRolesViewModel>
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form method="post">
+    <div class="card">
+        <div class="card-header customContainer">
+            <h2>Manage User Roles</h2>
+            Add/Remove Roles for User: @ViewBag.UserName.
+        </div>
+        <div class="card-body darkTxt">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                // Hidden inputs to ensure all data is sent to the server
+                <input type="hidden" asp-for="@Model[i].RoleId" />
+                <input type="hidden" asp-for="@Model[i].RoleName" />
+
+
+                // Conditionally render visible checkboxes
+                if (Model[i].RoleName != "RatingE" && Model[i].RoleName != "RatingT" && Model[i].RoleName != "RatingM")
+                {
+                    <div class="form-check m-1">
+                        <input asp-for="@Model[i].Selected" class="form-check-input" />
+                        <label class="form-check-label" asp-for="@Model[i].Selected">
+                            @Model[i].RoleName
+                        </label>
+                    </div>
+                }
+                else
+                {
+                    <input type="hidden" name="[@i].Selected" value="@Model[i].Selected" />
+                }
+            }
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div class="card-footer customContainer">
+            <input type="submit" value="Update" class="customSpookyBtn"/>
+            <button type="button" class="customSpookyBtn" onclick="window.history.back();">Cancel</button>
+        </div>
+    </div>
+</form>

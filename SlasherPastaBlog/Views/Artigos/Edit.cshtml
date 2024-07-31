@@ -1,0 +1,50 @@
+﻿@using System.Security.Claims;
+@model SlasherPastaBlog.Models.Artigos
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Artigos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form class="d-flex flex-column gap-2" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DataPublicacao" />
+            <input type="hidden" asp-for="ApplicationUserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+
+            <div class="form-group col-md-4">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="customTextInput" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Conteudo" class="control-label"></label>
+                <textarea class="customTextInput" asp-for="Conteudo" class="form-control"></textarea>
+                <span asp-validation-for="Conteudo" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Role" class="control-label"></label>
+                @*Rating the posts for audiences (E-everyone, T-teen, M-mature)*@
+                <select asp-for="Role" class="customTextInput" asp-items="@(new SelectList(new List<string> { "RatingE", "RatingT", "RatingM" }))"></select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="customSpookyBtn" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="customLink">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

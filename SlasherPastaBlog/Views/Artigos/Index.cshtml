@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SlasherPastaBlog.Models.Artigos>
+
+@{
+    ViewData["Title"] = "Index";
+    var yearsAndMonths = ViewBag.YearsAndMonths as Dictionary<int, List<string>>;
+    int? year = ViewBag.Year;
+    string month = ViewBag.Month;
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <aside>
+            <h4><a class="customLink" href="@Url.Action("Index")">Filter by Date</a></h4>
+            <ul class="list-group">
+                @foreach (var yearItem in yearsAndMonths)
+                {
+                    <li class="list-group-item customContainer">
+                        <a class="customLink" href="@Url.Action("Index", new { year = yearItem.Key })">@yearItem.Key</a>
+                        <ul class="list-unstyled">
+                            @foreach (var monthItem in yearItem.Value)
+                            {
+                                <li>
+                                    <a class="customLink" href="@Url.Action("Index", new { year = yearItem.Key, month = monthItem })">@monthItem</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </aside>
+    </div>
+    <div class="col-md-9">
+        <div class="row justify-content-between align-items-center mb-3">
+            <h1 class="col-auto customLink">List of stories:</h1>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p class="col-auto">
+                    <a asp-action="Create" class="customSpookyBtn">Create New</a>
+                </p>
+            }
+        </div>
+
+        <form asp-action="Index" method="get" class="mb-3">
+            <div class="input-group">
+                <input type="hidden" name="year" value="@year" />
+                <input type="hidden" name="month" value="@month" />
+                <input type="text" class="form-control customTextInput" placeholder="Search articles" name="searchString" value="@ViewData["CurrentFilter"]" />
+                <div class="input-group-append">
+                    <input type="submit" class="customInputBtn" value="Procurar artigos" />
+                </div>
+            </div>
+
+        </form>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 customContainer">
+                        <div class="card-body">
+                            <h5><a class="customLink" asp-action="Details" asp-route-id="@item.Id">@item.Titulo</a></h5>
+                           
+                            <p class="card-text">Restriction: @item.Role</p>
+                            <p class="card-text">Author: @item.ApplicationUser.UserName</p>
+                            <p class="card-text text-muted">Published: @item.DataPublicacao.ToString("MMMM dd, yyyy")</p>
+
+
+                            <div class="mb-auto">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="customSpookyBtn">Read Story</a>
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="mt-2">
+                                        <a class="btn" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                        <a class="btn red" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash3"></i></a>
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

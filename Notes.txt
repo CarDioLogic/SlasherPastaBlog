@@ -1,0 +1,11 @@
+Customizing Microsoft Identity User:
+To customize microsoft's identity IdentityUser, its useful when we want the users to have extra properties like a Date of birth.
+So we create a new model that inherits the IdentityUser and has those extra properties.
+
+Follow the steps in custom user data/customize model:
+https://learn.microsoft.com/en-us/aspnet/core/security/authentication/customize-identity-model?view=aspnetcore-8.0
+
+After that, we should scafold microsoft identity again to update "IdentityUser" to the name of our new model (so we should select that model in the scafolding menu).
+Also, in the register forms and controller methods we should had the inputs and logic to account for those extra properties so that they are actually saved in the DB along with the default properties of the IdentityUser.
+
+And i think thats it!

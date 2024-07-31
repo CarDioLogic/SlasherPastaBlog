@@ -1,0 +1,47 @@
+﻿@using System.Security.Claims;
+@model SlasherPastaBlog.Models.Artigos
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Write a new story to your hearts content</h2>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form class="d-flex flex-column gap-2" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="ApplicationUserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+
+            <div class="form-group col-md-4">
+                <label asp-for="Titulo" class="control-label">Title</label>
+                <input class="customTextInput" asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Conteudo" class="control-label">Story</label>
+                <textarea class="customTextInput" asp-for="Conteudo" class="form-control"></textarea>
+                <span asp-validation-for="Conteudo" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Role" class="control-label">Age restriction</label>
+                <select asp-for="Role" class="customTextInput" asp-items="@(new SelectList(new List<string> { "RatingE", "RatingT", "RatingM" }))"></select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="customSpookyBtn" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="customLink" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

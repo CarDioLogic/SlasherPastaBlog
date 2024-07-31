@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&family=Playwrite+AU+VIC:wght@100..400&family=Roboto+Slab:wght@100..900&display=swap');
+
+html {
+    --Dark: #2c2c2c;
+    --grayishDark: #3c3c3c;
+    --bloodRed: #961219;
+    --lightBloodRed: #c03338;
+    --white: antiquewhite;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+body {
+    font-family: "Eczar", serif;
+    color: var(--white);
+    margin-bottom: 60px;
+    background-color: var(--grayishDark)
+}
+
+
+.customSpookyLogo, .customSpookyNavbarLink {
+    color: var(--grayishDark);
+    text-decoration: none;
+    margin-right: 1rem;
+}
+.customSpookyLogo:hover, .customSpookyNavbarLink:hover{
+    color: var(--bloodRed);
+    transform: scale(1.1);
+}
+.customSpookyLogo {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    transition: transform 0.3s ease-in-out;
+}
+.customSpookyLogo:hover{
+    transform: scale(1.1);
+}
+
+
+.customLink, .btn-link {
+    color: var(--lightBloodRed);
+}
+.customLink:hover, .btn-link:hover {
+    color: var(--bloodRed);
+}
+
+.customSpookyBtn, .customInputBtn {
+    text-decoration: none;
+    color: var(--white);
+    background-color: transparent;
+    border: 1px solid var(--white);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.customSpookyBtn:hover, .customInputBtn:hover {
+    color: var(--lightBloodRed);
+    border: 1px solid var(--lightBloodRed);
+}
+.customSpookyBtn:active {
+    background-color: var(--lightBloodRed);
+    color: var(--white);
+    border: none;
+}
+
+.customContainer{
+    list-style: none;
+    background-color: var(--Dark)
+}
+
+.customVeryDarkText{
+    color: var(--Dark);
+}
+
+.customTextInput {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: var(--white);
+    background-clip: padding-box;
+    border: 1px solid var(--white);
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.customInputBtn:focus {
+    box-shadow: 0 0 0 0.2rem var(--lightBloodRed);
+}
+
+.customTextInput:focus {
+    color: var(--lightBloodRed);
+    background-color: #fff;
+    border-color: var(--lightBloodRed);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--lightBloodRed);
+}
+
+.bi {
+    color: white !important;
+}
+.darkTxt{
+    color: var(--grayishDark)
+}
+
+
+.redLightBG option {
+    background-color: var(--lightBloodRed);
+}
+.nav-link.active.bi {
+    background-color: var(--lightBloodRed); 
+}
+.specialClass{
+    margin:0;
+    font-size:0.8em;
+}
+
+
+
+
+
+/* Card container and card styles*/

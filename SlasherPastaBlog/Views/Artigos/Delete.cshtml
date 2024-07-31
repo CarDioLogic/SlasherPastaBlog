@@ -1,0 +1,62 @@
+﻿@model SlasherPastaBlog.Models.Artigos
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Are you sure you want to delete this spooker for real?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Title:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+
+        <div class="row mt-4">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DataPublicacao)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.DataPublicacao)
+            </dd>
+
+            <dt class="col-sm-2">
+                Author:
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.ApplicationUser.UserName)
+            </dd>
+        </div>
+        <dt class="col-sm-2">
+            Age restriction:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+        <dt class="col-sm-2">
+            Score:
+        </dt>
+        <dd class="col-sm-10">
+            @if (@Model.Ratings.Any() == true)
+            {
+                <p>@Model.Ratings.Average(r => r.Rating).ToString("F1")</p>
+            }
+            else
+            {
+                <p>No Score</p>
+            }
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="customSpookyBtn" /> |
+        <a class="customLink" asp-action="Details" asp-route-id="@Model.Id">Go to story</a> |
+        <a class="customLink" asp-action="Index">Back to List</a>
+    </form>
+</div>
