@@ -44,7 +44,7 @@ Make sure you have a database in MSSQL server macthing the connection string
 
 ## Screenshots
 ![Homepage Screenshot](SlasherPastaBlog/Screenshots/Homepage.PNG)
-![Stories Screenshot](SlasherPastaBlog/Screenshots/Homepage.PNG)
+![Stories Screenshot](SlasherPastaBlog/Screenshots/Stories.PNG)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
