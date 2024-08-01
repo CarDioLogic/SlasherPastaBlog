@@ -3,9 +3,9 @@
 html {
     --Dark: #2c2c2c;
     --grayishDark: #3c3c3c;
-    --bloodRed: #961219;
+    --bloodRed: #530805;
     --lightBloodRed: #c03338;
-    --white: antiquewhite;
+    --white: #ECECEC;
     font-size: 14px;
     position: relative;
     min-height: 100%;
@@ -22,11 +22,60 @@ html {
 }
 
 body {
+    min-height: 100vh;
     font-family: "Eczar", serif;
     color: var(--white);
-    margin-bottom: 60px;
-    background-color: var(--grayishDark)
+    background-color: black;
 }
+main {
+    min-height: 80vh;
+    position: relative;
+}
+.container-heroSection {
+    position: absolute;
+    top: 30%;
+    left: 0;
+}
+.imgContainer_MM{
+    position: absolute;
+    top:0%;
+    right:5%;
+    z-index: -1;
+}
+.heroSection-text{
+    width: 65%;
+}
+.title-heroSection{
+    font-size:4rem;
+}
+.subtitle-heroSection {
+    font-size: 1rem;
+}
+.whiteCustomBackground{
+    background-color: var(--white);
+}
+.button-heroSection {
+    font-size: 1.1rem;
+    padding-block: 0.5em;
+    padding-inline: 1em;
+    background-color: var(--bloodRed);
+    color: var(--white);
+    border: none;
+}
+.button-heroSection:active {
+    background-color: var(--lightBloodRed);
+}
+.link_unstyled, .link_unstyled:hover {
+    text-decoration: none;
+    color: var(--white);
+}
+.link_unstyled:hover{
+    text-decoration:underline;
+}
+.border-left {
+    border-left: 2px solid var(--grayishDark)
+}
+
 
 
 .customSpookyLogo, .customSpookyNavbarLink {
@@ -53,11 +102,17 @@ body {
 }
 
 
-.customLink, .btn-link {
+.customLink, .btn-link, .textRed {
     color: var(--lightBloodRed);
 }
 .customLink:hover, .btn-link:hover {
     color: var(--bloodRed);
+}
+.customCardLink {
+    color: var(--white);
+}
+.customCardLink:hover {
+    color: var(--lightBloodRed);
 }
 
 .customSpookyBtn, .customInputBtn {
@@ -82,9 +137,13 @@ body {
     border: none;
 }
 
-.customContainer{
+.customRedContainer{
     list-style: none;
-    background-color: var(--Dark)
+    background-color: var(--bloodRed)
+}
+.customWhiteContainer {
+    list-style: none;
+    background-color: var(--white);
 }
 
 .customVeryDarkText{

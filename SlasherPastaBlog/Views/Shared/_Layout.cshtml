@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SlasherPastaBlog</title>
+    <link rel="icon" href="/images/knife.png" type="image/png">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -11,15 +13,15 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light whiteCustomBackground box-shadow mb-3 px-5">
             <div class="container-fluid">
                 <a class="customSpookyLogo" asp-area="" asp-controller="Home" asp-action="Index">SlasherPasta</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end gap-2">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="customSpookyNavbarLink" asp-area="" asp-controller="Artigos" asp-action="Index">Stories</a>
                         </li>
@@ -33,7 +35,9 @@
                             </li>
                         }
                     </ul>
-                    <partial name="_LoginPartial" />
+                    <div class="border-left">
+                        <partial name="_LoginPartial" />
+                    </div>
                 </div>
             </div>
         </nav>
@@ -44,9 +48,10 @@
         </main>
     </div>
 
+
     <footer class="border-top footer">
         <div class="container text-center ">
-            &copy; 2024 - SlasherPastaBlog - Made by with ASP.NET, Bootstrap and CSS - <a class="customLink" asp-area="" asp-controller="Home" asp-action="AppDetails">App details</a>
+            &copy; 2024 - SlasherPastaBlog - Your place for sharing and rating <em>horror stories</em> - <a class="customLink" asp-area="" asp-controller="Home" asp-action="AppDetails">App details</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

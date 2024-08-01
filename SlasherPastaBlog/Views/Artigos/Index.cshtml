@@ -15,7 +15,7 @@
             <ul class="list-group">
                 @foreach (var yearItem in yearsAndMonths)
                 {
-                    <li class="list-group-item customContainer">
+                    <li class="list-group-item customWhiteContainer">
                         <a class="customLink" href="@Url.Action("Index", new { year = yearItem.Key })">@yearItem.Key</a>
                         <ul class="list-unstyled">
                             @foreach (var monthItem in yearItem.Value)
@@ -32,12 +32,12 @@
     </div>
     <div class="col-md-9">
         <div class="row justify-content-between align-items-center mb-3">
-            <h1 class="col-auto customLink">List of stories:</h1>
+            <h1 class="col-auto textRed">List of stories:</h1>
 
             @if (User.Identity.IsAuthenticated)
             {
                 <p class="col-auto">
-                    <a asp-action="Create" class="customSpookyBtn">Create New</a>
+                    <a asp-action="Create" class="customSpookyBtn">Publish story</a>
                 </p>
             }
         </div>
@@ -46,7 +46,7 @@
             <div class="input-group">
                 <input type="hidden" name="year" value="@year" />
                 <input type="hidden" name="month" value="@month" />
-                <input type="text" class="form-control customTextInput" placeholder="Search articles" name="searchString" value="@ViewData["CurrentFilter"]" />
+                <input type="text" class="form-control customTextInput" placeholder="Search stories..." name="searchString" value="@ViewData["CurrentFilter"]" />
                 <div class="input-group-append">
                     <input type="submit" class="customInputBtn" value="Search" />
                 </div>
@@ -54,20 +54,21 @@
 
         </form>
 
-        <div class="row">
+        <div class="row mb-5">
             @foreach (var item in Model)
             {
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card h-100 customContainer">
-                        <div class="card-body">
-                            <h5><a class="customLink" asp-action="Details" asp-route-id="@item.Id">@item.Titulo</a></h5>
-                           
-                            <p class="card-text">Restriction: @item.Role</p>
-                            <p class="card-text">Author: @item.ApplicationUser.UserName</p>
-                            <p class="card-text text-muted">Published: @item.DataPublicacao.ToString("MMMM dd, yyyy", new CultureInfo("en-US"))</p>
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100 customRedContainer">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div class="card-text mb-2">
+                                <h5><a class="customCardLink" asp-action="Details" asp-route-id="@item.Id">@item.Titulo</a></h5>
 
+                                <p class="card-text">Restriction: @item.Role</p>
+                                <p class="card-text">Author: @item.ApplicationUser.UserName</p>
+                                <p class="card-text text-muted">Published: @item.DataPublicacao.ToString("MMMM dd, yyyy", new CultureInfo("en-US"))</p>
+                            </div>
 
-                            <div class="mb-auto">
+                            <div class="">
                                 <a asp-action="Details" asp-route-id="@item.Id" class="customSpookyBtn">Read Story</a>
 
                                 @if (User.IsInRole("Admin"))
