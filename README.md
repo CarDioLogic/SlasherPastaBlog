@@ -43,8 +43,8 @@ Make sure you have a database in MSSQL server macthing the connection string
 - Login as Admin to manage stories and users.
 
 ## Screenshots
-![Homepage Screenshot](screenshots/homepage.png)
-![Stories Screenshot](screenshots/stories.png)
+![Homepage Screenshot](SlasherPastaBlog/screenshots/homepage.png)
+![Stories Screenshot](SlasherPastaBlog/screenshots/stories.png)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
