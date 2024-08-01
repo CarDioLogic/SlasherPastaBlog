@@ -16,7 +16,7 @@ A simple blog application built with ASP.NET Core that allows users to create, m
 ## Technologies Used
 - ASP.NET Core
 - Entity Framework Core
-- SQL Server
+- Microsoft SQL Server
 - Bootstrap 5
 - C#, HTML, CSS
 
@@ -27,7 +27,7 @@ A simple blog application built with ASP.NET Core that allows users to create, m
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
 ### Steps
-1. Clone the repository: `git clone https://github.com/username/repo.git`
+1. Clone the repository: `git clone https://github.com/CarDioLogic/SlasherPastaBlog.git`
 2. Navigate to the project directory: `cd repo`
 3. Restore dependencies: `dotnet restore`
 4. Build the project: `dotnet build`
@@ -35,16 +35,16 @@ A simple blog application built with ASP.NET Core that allows users to create, m
 
 ### Configuration
 Update the `appsettings.json` file with your database connection string.
+Make sure you have a database in MSSQL server macthing the connection string
 
 ## Usage
-- Navigate to `/posts` to view all blog posts.
-- Use `/posts/create` to add a new post.
-- Use `/posts/edit/{id}` to edit a post.
+- Read pre-seeded stories as a unregistered user.
+- Register a user to create and rate other stories.
+- Login as Admin to manage stories and users.
 
 ## Screenshots
 ![Homepage Screenshot](screenshots/homepage.png)
-
-
+![Stories Screenshot](screenshots/stories.png)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
