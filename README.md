@@ -43,7 +43,9 @@ Make sure you have a database in MSSQL server macthing the connection string
 - Login as Admin to manage stories and users.
 
 ## Screenshots
+### Homepage
 ![Homepage Screenshot](SlasherPastaBlog/Screenshots/Homepage.PNG)
+### Stories
 ![Stories Screenshot](SlasherPastaBlog/Screenshots/Stories.PNG)
 
 ## License
