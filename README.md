@@ -18,7 +18,7 @@ A simple blog application built with ASP.NET Core that allows users to create, m
 - Entity Framework Core
 - Microsoft SQL Server
 - Bootstrap 5
-- C#, HTML, CSS
+- C#, HTML, CSS, bootstrap
 
 ## Installation and Setup
 
